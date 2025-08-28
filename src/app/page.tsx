@@ -7,11 +7,12 @@ export default function Home() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(true);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    // Logique de soumission ici
     console.log({ email, password, confirmPassword, rememberMe });
+    setSubmitted(true);
   };
 
   return (
@@ -25,6 +26,7 @@ export default function Home() {
           <b>Email</b>
         </label>
         <input
+          id="email"
           type="email"
           placeholder="Enter Email"
           name="email"
@@ -37,6 +39,7 @@ export default function Home() {
           <b>Password</b>
         </label>
         <input
+          id="password"
           type="password"
           placeholder="Enter Password"
           name="password"
@@ -49,6 +52,7 @@ export default function Home() {
           <b>Repeat Password</b>
         </label>
         <input
+          id="confirmPassword"
           type="password"
           placeholder="Repeat Password"
           name="confirmPassword"
@@ -79,10 +83,11 @@ export default function Home() {
           <button type="button" className={styles.cancelbtn}>
             Cancel
           </button>
-          <button type="submit" className={styles.signupbtn}>
+          <button id="signup-button" type="submit" className={styles.signupbtn}>
             Sign Up
           </button>
         </div>
+        {submitted && <div id="confirmation-message">Inscription réussie</div>}
       </form>
     </div>
   );
